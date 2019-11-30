@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Allo Sante",
+    "name": "Allo Sante Express",
     "slug": "Allo",
     "privacy": "public",
     "sdkVersion": "33.0.0",
@@ -11,10 +11,10 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -24,11 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.icore.allosante",
+      "bundleIdentifier": "com.icore.allosanteexpress",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.icore.allosante"
+      "package": "com.icore.allosanteexpress"
     }
   }
 }

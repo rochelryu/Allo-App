@@ -2,7 +2,7 @@ import React from 'react';
 import {StatusBar, View, StyleSheet} from 'react-native'
 //import { AppLoading, Font } from 'expo';
 
-import Stacked from './Navigation/Navigation';
+import Stacked from './Navigation/Stack';
 
 export default class App extends React.Component {
     constructor(props){
