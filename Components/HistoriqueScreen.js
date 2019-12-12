@@ -3,7 +3,8 @@ import {
     View,
     ScrollView,
     StatusBar,
-    FlatList,AsyncStorage
+    FlatList,AsyncStorage,
+    ActivityIndicator
 } from 'react-native';
 import {history, delSer} from '../ServiceWorker/helper'
 import {Header} from "react-native-elements";
@@ -15,9 +16,9 @@ export default class HistoriqueScreen extends React.Component{
         super(props)
         this.state={
             info:[],
-            name:""
+            name:"",
+            load:false
         }
-        this._search = this._search.bind(this);
     }
     async componentDidMount() {
         const ident = await AsyncStorage.getItem("identAllo");
@@ -28,55 +29,9 @@ export default class HistoriqueScreen extends React.Component{
         });
         StatusBar.setHidden(false);
         this.setState({
-            info:isMe.user.services.reverse()
+            info:isMe.user.services.reverse(),
+            load:true
         })
-    }
-    _search(text){
-        if(count === 0){
-            datas = this.state.info;
-            count = 1;
-            if(text !== ""){
-                let fake = text.toString().toLowerCase();
-                let tack = [];
-                datas.forEach((value, key)=> {
-                    if (value.code.toLowerCase().indexOf(fake) !== -1 || value.Motif.toLowerCase().indexOf(fake) !== -1 || value.date.toLowerCase().indexOf(fake) !== -1 || value.medecin.toLowerCase().indexOf(fake) !== -1) {
-                        tack.push(value)
-
-                    }
-                });
-                this.setState({
-                    info: tack
-                })
-            }
-            else{
-                this.setState({
-                    info: datas
-                })
-            }
-        }
-        else{
-            if(text !== ""){
-                let fake = text.toString().toLowerCase();
-                let tack = [];
-                datas.forEach((value, key)=> {
-                    if (value.code.toLowerCase().indexOf(fake) !== -1 || value.Motif.toLowerCase().indexOf(fake) !== -1 || value.date.toLowerCase().indexOf(fake) !== -1 || value.medecin.toLowerCase().indexOf(fake) !== -1) {
-                        tack.push(value)
-
-                    }
-                });
-                this.setState({
-                    info: tack
-                })
-            }
-            else{
-                this.setState({
-                    info: datas
-                })
-            }
-        }
-    }
-    filtrage(value, code){
-        return value.code !== code;
     }
 
     del = async (ele) => {
@@ -90,23 +45,41 @@ export default class HistoriqueScreen extends React.Component{
     };
 
     render() {
-        return(
-            <View style={{flex:1, backgroundColor:"#fff"}}>
-                <Header
-                    centerComponent={{ text: "Votre Historique", style: { color: '#fff' } }}
-                    containerStyle={{
-                        backgroundColor: '#4dbcc7',
-                        justifyContent: 'space-around',
-                    }}
-                />
-                <ScrollView>
-                    <FlatList
-                        data={this.state.info}
-                        keyExtractor={(item) => item.code}
-                        renderItem={({item}) => <CardHistorique ele={item} action={this.del} />}
+        if(this.state.load){
+            return(
+                <View style={{flex:1, backgroundColor:"#fff"}}>
+                    <Header
+                        centerComponent={{ text: "Votre Historique", style: { color: '#fff' } }}
+                        containerStyle={{
+                            backgroundColor: '#4dbcc7',
+                            justifyContent: 'space-around',
+                        }}
                     />
-                </ScrollView>
-            </View>
-        )
+                    <ScrollView>
+                        <FlatList
+                            data={this.state.info}
+                            keyExtractor={(item) => item.code}
+                            renderItem={({item}) => <CardHistorique ele={item} action={this.del} />}
+                        />
+                    </ScrollView>
+                </View>
+            )
+        }
+        else {
+            return(
+                <View style={{flex:1, backgroundColor:"#fff"}}>
+                    <Header
+                        centerComponent={{ text: "Votre Historique", style: { color: '#fff' } }}
+                        containerStyle={{
+                            backgroundColor: '#4dbcc7',
+                            justifyContent: 'space-around',
+                        }}
+                    />
+                    <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+                        <ActivityIndicator color="#4dbcc7" />
+                    </View>
+                </View>
+            )
+        }
     }
 }

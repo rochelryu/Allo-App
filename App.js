@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, View, StyleSheet} from 'react-native'
+import {SafeAreaView, StyleSheet} from 'react-native'
 //import { AppLoading, Font } from 'expo';
 
 import Stacked from './Navigation/Stack';
@@ -22,7 +22,10 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <Stacked style={styles.container} />
+            <SafeAreaView style={styles.container}>
+                <Stacked style={styles.container} />
+            </SafeAreaView>
+            
 
         );
     }

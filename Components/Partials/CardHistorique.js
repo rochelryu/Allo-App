@@ -6,8 +6,8 @@ export default class CardHistorique extends React.Component{
     render() {
         const {ele,action} = this.props;
         let img = (ele.serviceName == "Assistance") ? require('../../assets/images/assistance.png'):require('../../assets/images/rdv.png');
-        let medecin = (ele.medecin)? ele.medecin: "Veillez patienter traitement";
-        let etablissement = (ele.etablissement)? ele.etablissement: "Veillez patienter traitement";
+        let medecin = (ele.medecin)? 'Docteur '+ele.medecin + ', demande traitée' : "Demande en cours de traitement";
+        let etablissement = (ele.etablissement)? ele.etablissement+ ', demande traitée': "Demande en cours de traitement";
         let titre = (ele.serviceName == "Assistance") ? medecin:etablissement;
         if(ele.del != 2){
             return(

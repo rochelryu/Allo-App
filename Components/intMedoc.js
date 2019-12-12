@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity,FlatList, AsyncStorage, ScrollView, ActivityIndicator, TextInput, StyleSheet} from 'react-native';
 import {Header} from "react-native-elements";
-import {  ListItem, Left, Body, Thumbnail } from 'native-base';
+import {  ListItem, Left, Body, Thumbnail, Right } from 'native-base';
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {
@@ -22,11 +22,14 @@ const CardPharma = (props) =>{
               <Body>
                 <Text style={styles.title}>{props.ele.name}</Text>
                 <Text style={styles.famille}>{props.ele.familie}</Text>
-                <Text style={styles.prix}>{props.ele.price}</Text>
+                
                 <Text style={styles.ordonnance}>{(props.ele.ordonnance)? 'Avec ordonnance': 'Sans ordonnance'}</Text>
               </Body>
+              <Right>
+              <Text style={styles.prix}>{props.ele.price}</Text>
+              </Right>
               
-            </ListItem>
+       </ListItem>
     );
 };
 const MyCustomLeftComponent = (props) =>{
@@ -66,6 +69,7 @@ const styles = StyleSheet.create({
     },
     ordonnance:{
         fontFamily:"LexendExa",
+        color:'#aa3454',
         fontSize: 14,
         textAlign:'right'
     }
@@ -105,9 +109,7 @@ export default class intMedoc extends React.Component{
     }
     specialite(item){
         if(item.length > 0){
-            console.log(item)
             const fade =  block.filter((value)=>this.filtrage(value,item.toLowerCase()));
-            console.log(fade);
             this.setState({
                 info:fade
             })

@@ -2,10 +2,14 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity,Modal, StatusBar, ImageBackground, TextInput, ScrollView, Image, AsyncStorage, ActivityIndicator, Alert} from 'react-native';
 import DateTimePicker from "react-native-modal-datetime-picker";
 import {Spinner} from "native-base";
-import {getAllVille, editProfil, history} from '../ServiceWorker/helper';
+import {socketLink} from '../ServiceWorker/helper';
+import {getAllVille, editProfil, history, ChangePass} from '../ServiceWorker/helper';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import io from "socket.io-client/dist/socket.io";
+
+window.navigator.userAgent = "react-native";
 let suiveur = 0;
 const MyCustomLeftComponent = (props) =>{
     return (
@@ -49,9 +53,11 @@ export default class Setting extends React.Component{
             email:"",
             commune:[],
             password:"",
+            newPassword:"",
             confpassword:"",
             load:0
         }
+        this.socket = io(socketLink,{jsonp:true});
         this.onValueChange = this.onValueChange.bind(this);
         this.onPrefixChange = this.onPrefixChange.bind(this);
         this.takeCirconstanceCamera = this.takeCirconstanceCamera.bind(this);
@@ -124,6 +130,34 @@ export default class Setting extends React.Component{
         this.setState({ chosenDate: newDate });
     }
 
+    _onDoneChangePass = async () => {
+        this.setState({
+            showRealApp:true
+        })
+        if(this.state.newPassword === this.state.confpassword && this.state.password !== '' && this.state.confpassword !== ''){
+            AsyncStorage.setItem("identAllo", status.user.ident);
+               const ident = await AsyncStorage.getItem("nameAllo");
+            const status = await ChangePass(ident,this.state.password,this.state.confpassword)
+            if(status.etat){
+                Alert.alert('Reuissie', 'Votre mot de passe a été modifié avec succès')
+                this.setState({
+                    showRealApp:false
+                })
+            }
+            else {
+                Alert.alert('Erreur', 'Cette demande a echoué par presence de données erronées')
+                this.setState({
+                    showRealApp:false
+                })
+            }
+        }
+        else {
+            Alert.alert("Erreur", "Veuillez remplir les champs correctement")
+            this.setState({
+                showRealApp:false
+            })
+        }
+    }
     _onDone = async () => {
         this.setState({
             showRealApp:true
@@ -156,15 +190,18 @@ export default class Setting extends React.Component{
             }
         }
         else {
-            Alert.alert("Erreur", "Veillez remplir les champs correctement")
+            Alert.alert("Erreur", "Veuillez remplir les champs correctement")
             this.setState({
                 showRealApp:false
             })
         }
     }
-    _onDoneInscription = () => {
-
-        this.props.navigation.navigate('Login')
+    _onDoneLogout(){
+        AsyncStorage.removeItem("identAllo");
+        AsyncStorage.removeItem("nameAllo");
+        AsyncStorage.removeItem("prefix");
+        Alert.alert("A bientôt", "Nous sommes toujours disponible pour vous");
+        this.props.navigation.navigate('LoginScreen');
     }
     changeNumber(value){
         this.setState({
@@ -205,6 +242,11 @@ export default class Setting extends React.Component{
     changePassConf(value){
         this.setState({
             confpassword:value
+        })
+    }
+    changeNewPass(value){
+        this.setState({
+            newPassword:value
         })
     }
     closePhoto = ()=>{
@@ -368,31 +410,18 @@ export default class Setting extends React.Component{
                                                     placeholderTextColor="#555"
                                                     style={styles.focus}
                                                     secureTextEntry
-                                                    ref={(input) => {
-                                                        this.heightTextInput = input;
-                                                    }}
+
                                                     placeholder="Ancien mot de passe"
-                                                    returnKeyType={"next"}
-                                                    onSubmitEditing={() => {
-                                                        this.heightTextInput.focus();
-                                                    }}
-                                                    blurOnSubmit={false}
+                                                    
                                                 />
                                             </View>
                                             <View style={styles.input}>
                                                 <Icon name="textbox-password" size={30} color="#555"/>
                                                 <TextInput
-                                                    onChangeText={(value) => this.changePassConf(value)}
+                                                    onChangeText={(value) => this.changeNewPass(value)}
                                                     placeholderTextColor="#555"
                                                     style={styles.focus}
                                                     secureTextEntry
-                                                    ref={(input) => {
-                                                        this.heightTextInput = input;
-                                                    }}
-                                                    returnKeyType={"next"}
-                                                    onSubmitEditing={() => {
-                                                        this.nineTextInput.focus();
-                                                    }}
                                                     placeholder="Nouveau mot de passe"
                                                 />
                                             </View>
@@ -403,21 +432,17 @@ export default class Setting extends React.Component{
                                                     placeholderTextColor="#555"
                                                     style={styles.focus}
                                                     secureTextEntry
-                                                    ref={(input) => {
-                                                        this.nineTextInput = input;
-                                                    }}
                                                     placeholder="Confirmez mot de passe"
                                                 />
                                             </View>
                                             
-                                            <TouchableOpacity onPress={this._onDone} style={styles.connect}>
+                                            <TouchableOpacity onPress={this._onDoneChangePass} style={styles.connect}>
                                                 {(this.state.showRealApp)? <Spinner color="#555"/>: <Image style={styles.connectImg}
                                                     source={require('../assets/images/connecter.png')}/>}
                                             </TouchableOpacity>
                                         
-                                            <TouchableOpacity onPress={this._onDone} style={styles.inscription}>
-                                                {(this.state.showRealApp)? <Spinner color="#555"/>: <Image style={styles.signinImg}
-                                                    source={require('../assets/images/decoo.png')}/>}
+                                            <TouchableOpacity onPress={()=>this._onDoneLogout()} style={styles.inscription}>
+                                                <Image style={styles.signinImg} source={require('../assets/images/decoo.png')}/>
                                             </TouchableOpacity>
                                             <View style={{height:55}}>
     
@@ -441,7 +466,6 @@ export default class Setting extends React.Component{
           transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            console.log('Fermé');
           }}>
           <View style={{marginTop: 222, height:70, marginLeft:40,marginRight:40,backgroundColor:"#fff", alignItems:"center",justifyContent:"center"}}>
             <View>
@@ -454,11 +478,14 @@ export default class Setting extends React.Component{
             <MyCustomLeftComponentTwo close={this.closePhoto} />
             <Text style={{color:"#fff"}}>Allô Santé Express Camera</Text>
             </View>
-                <Camera style={{ flex: 7, justifyContent:"flex-end" }} type={this.state.type}
+                <Camera style={{ flex: 6, justifyContent:"flex-end" }} type={this.state.type}
                     ref={ref => {
                     this.camera = ref;
                 }}>
-                  <View
+                  
+                </Camera>
+                <View style={{ flex: 1,backgroundColor:'#000000', justifyContent:"flex-end" }}>
+                <View
                     style={{
                       height:70,
                       padding:10,
@@ -497,7 +524,6 @@ export default class Setting extends React.Component{
                     if (this.camera) {
                         this.setModalVisible(true);
                         let photo = await this.camera.takePictureAsync({base64:true});
-                        //console.log(photo.uri, "the ouf de la mode", photo.base64.length)
                         this.setState(
                             {
                                 profil: { uri: `data:image/jpg;base64,${photo.base64}` },
@@ -505,6 +531,7 @@ export default class Setting extends React.Component{
                             },()=>{
                                 suiveur = 1;
                                 this.setModalVisible(false);
+                                this.socket.emit("change photo", {profil:this.state.profil.uri, ident: this.state.info.ident});
                             }
                         )
                     
@@ -515,7 +542,7 @@ export default class Setting extends React.Component{
                   size={35} />
                     </TouchableOpacity>
                   </View>
-                </Camera>
+                </View>
               </View>);
         }
         

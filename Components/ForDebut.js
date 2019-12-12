@@ -35,6 +35,9 @@ export default class ForDebut extends React.Component{
         BackHandler.exitApp(); // works best when the goBack is async
         return true;
     };
+    componentWillUnmount(){
+        BackHandler.remove()
+    }
     render() {
         if(this.state.load === 0){
             return(

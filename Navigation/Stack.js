@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
   tab:{
     backgroundColor:"#fff"
+
   },
   image: {
       height: 70,
@@ -69,7 +70,7 @@ const TabR = createMaterialBottomTabNavigator({
       }},
   ProfileD:{screen:Set,
       navigationOptions:{
-          tabBarLabel:'Support',
+          tabBarLabel:'Paramètre',
           tabBarIcon:({tintColor})=>(
               <View>
                   <Icon name="cogs" color={tintColor} size={24}/>
@@ -191,6 +192,7 @@ const Stacked = createStackNavigator({
                 header: null,
               })
             },
+            
             Profil: {
               screen: Setting,
               navigationOptions: ()=>({

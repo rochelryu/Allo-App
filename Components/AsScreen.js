@@ -125,7 +125,6 @@ export default class AsScreen extends React.Component{
         const ident = await AsyncStorage.getItem("identAllo");
         const name = await AsyncStorage.getItem("nameAllo");
         const isMe = await autre(ident);
-        console.log(JSON.stringify(isMe));
         this.setState({
             name:name,
             totalAd:isMe.assistance,
@@ -280,12 +279,13 @@ back(){
                                                        returnKeyType='next'
                                                        onChangeText={(value)=>this.motifText(value)}
                                                        autoCorrect={false}/>
-                                            <View>
+                                            <View style={{marginBottom: 30}}>
                                                 <Button
                                                     color="#028fb0"
                                                     title="Envoyer"
                                                     onPress={()=>this.send()}
                                                 />
+
                                             </View>
                                         </View>
                                     </View>

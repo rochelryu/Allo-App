@@ -144,7 +144,10 @@ export default class intAssurance extends React.Component{
                             this.props.navigation.goBack();
                     }
                     else{
-                        Alert.alert('Erreur', "Veillez remplir tous les champs coorectement")
+                        Alert.alert('Erreur', "Veuillez remplir tous les champs correctement")
+                        this.setState({
+                            showRealApp:false,
+                        })
                     }
     }
     _onDoneVoyage = () => {
@@ -164,7 +167,10 @@ export default class intAssurance extends React.Component{
                         this.props.navigation.goBack();
                 }
                 else{
-                    Alert.alert('Erreur', "Veillez remplir tous les champs coorectement")
+                    Alert.alert('Erreur', "Veuillez remplir tous les champs correctement")
+                    this.setState({
+                        showRealApp:false,
+                    })
                 }
         
     }
@@ -267,7 +273,7 @@ export default class intAssurance extends React.Component{
                                             onChangeText={(value) => this.changeFirstName(value)}
                                             style={styles.focus}
                                             keyboardType="default"
-                                            placeholder="Votre Prénoms"
+                                            placeholder="Votre Prénom"
                                         />
                                     </View>
                                     <View style={styles.input}>
@@ -512,7 +518,6 @@ export default class intAssurance extends React.Component{
               transparent={true}
               visible={this.state.modalVisible}
               onRequestClose={() => {
-                console.log('Fermé');
               }}>
               <View style={{marginTop: 222, height:70, marginLeft:40,marginRight:40,backgroundColor:"#fff", alignItems:"center",justifyContent:"center"}}>
                 <View>
@@ -568,7 +573,6 @@ export default class intAssurance extends React.Component{
                         if (this.camera) {
                             this.setModalVisible(true);
                             let photo = await this.camera.takePictureAsync({base64:true});
-                            //console.log(photo.uri, "the ouf de la mode", photo.base64.length)
                             this.setState(
                                 {
                                     passport: { uri: `data:image/jpg;base64,${photo.base64}` },

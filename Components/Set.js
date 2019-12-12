@@ -41,7 +41,7 @@ export default class Set extends React.Component{
                     </View>
     
                     <View style={styles.body}>
-                        <Text style={styles.textTitle}>Paramettre</Text>
+                        <Text style={styles.textTitle}>Paramètre</Text>
                     </View>
     
                     <View style={styles.footer}>

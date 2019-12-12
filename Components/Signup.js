@@ -4,6 +4,7 @@ import {getAllVille, signin} from '../ServiceWorker/helper'
 import {Left, ListItem, Picker, Radio, Right, Spinner} from "native-base";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import colors from 'react-native-web-swiper/build/colors';
 
 export default class Signup extends React.Component{
     constructor(props){
@@ -16,6 +17,7 @@ export default class Signup extends React.Component{
             commune:"",
             ville:"",
             prefix:"Prefixe",
+            pays:'Votre Pays',
             name:"",
             firstname:"",
             isDateTimePickerVisible: false,
@@ -29,6 +31,7 @@ export default class Signup extends React.Component{
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.onPrefixChange = this.onPrefixChange.bind(this);
+        this.onPaysChange = this.onPaysChange.bind(this);
     }
     showDateTimePicker = () => {
         this.setState({ isDateTimePickerVisible: true });
@@ -53,6 +56,11 @@ export default class Signup extends React.Component{
             prefix: value
         });
     }
+    onPaysChange(value) {
+        this.setState({
+            pays: value
+        });
+    }
     async componentDidMount() {
         const ville = await getAllVille();
         let verif = new Array();
@@ -71,7 +79,13 @@ export default class Signup extends React.Component{
         this.setState({
             showRealApp:true
         })
-        if(this.state.email.length > 5 && this.state.password.length > 3 && this.state.name.length + this.state.firstname.length > 5 && this.state.numero.length >= 8){
+        const fd = {labelle:this.state.pays,value:this.state.prefix}
+        let pays = false;
+        for (let i in this.state.totalAd){
+            if (this.state.totalAd[i].labelle === fd.labelle && this.state.totalAd[i].value === fd.value) pays = true;
+        }
+        
+        if(this.state.email.length > 5 && this.state.password.length > 3 && this.state.name.length + this.state.firstname.length > 5 && this.state.numero.length >= 8 && pays ){
             const status = await signin(this.state.email,this.state.password,this.state.numero,this.state.ville + ':' + this.state.commune,this.state.chosenDate.toString(),this.state.name + ' '+ this.state.firstname, this.state.horo, this.state.prefix)
             if(status.etat ){
                 console.log(status.user)
@@ -101,7 +115,7 @@ export default class Signup extends React.Component{
             }
         }
         else {
-            Alert.alert("Erreur", "Veillez remplir les champs correctement")
+            Alert.alert("Erreur", "Veuillez remplir les champs correctement")
             this.setState({
                 showRealApp:false
             })
@@ -234,28 +248,41 @@ export default class Signup extends React.Component{
                                         />
                                     </View>
                                     <View style={styles.input}>
-                                        <Icon name="earth" size={30} color="#fff"/>
-                                        <TextInput
-                                            placeholderTextColor="#fff"
-                                            style={styles.focus}
-                                            keyboardType="default"
-                                            placeholder="Votre Pays"
-                                            returnKeyType={"next"}
-                                            ref={(input) => {
-                                                       this.thirdTextInput = input;
-                                                   }}
-                                                   onSubmitEditing={() => {
-                                                       this.fourTextInput.focus();
-                                                   }}
-                                                   blurOnSubmit={false}
-                                        />
+                                    <Picker
+                                                mode="dropdown"
+                                                placeholder="Votre Pays"
+                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderIconColor="#007aff"
+                                                style={styles.inputs}
+                                                textStyle={{ color: "#fff" }}
+                                                itemStyle={{
+                                                    backgroundColor: "#d3d3d3",
+                                                    marginLeft: 0,
+                                                    paddingLeft: 10
+                                                }}
+                                                itemTextStyle={{ color: '#fff' }}
+                                                selectedValue={this.state.pays}
+                                                onValueChange={this.onPaysChange}
+                                                ref={(input) => {
+                                                    this.thirdTextInput = input;
+                                                }}
+                                                returnKeyType={"next"}
+                                                onSubmitEditing={() => {
+                                                    this.fourTextInput.focus();
+                                                }}
+                                                blurOnSubmit={false}
+                                            >
+                                                <Picker.Item label="Votre Pays" value="Votre Pays" />
+                                                {this.state.totalAd.map((value,index)=><Picker.Item key={index} label={value.labelle} value={value.labelle} />)}
+                                            </Picker>
+                                        
                                     </View>
                                     <View style={styles.input}>
                                         <View style={{width:"35%"}}>
                                             <Picker
                                                 mode="dropdown"
-                                                iosIcon={<Icon name="arrow-down" />}
-                                                placeholder="Commune"
+                                                iosIcon={<Icon name="arrow-down" colors='#ffffff' />}
+                                                placeholder="Prefix"
                                                 placeholderStyle={{ color: "#fff" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
@@ -435,6 +462,7 @@ const styles = StyleSheet.create(
         inscription:{
             height:80,
             width:"100%",
+            marginBottom:30,
             alignItems:"center",
             justifyContent:"center",
         },

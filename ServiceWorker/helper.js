@@ -13,7 +13,6 @@ export function login(email,password) {
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
                 next(err)
             })
     })
@@ -29,7 +28,23 @@ export function delSer(token,code) {
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
+                
+                next(err)
+            })
+    })
+}
+export function ChangePass(ident,oldPass,newPass) {
+    const ele = {
+        ident,
+        oldPass,
+        newPass
+    };
+    return new Promise(async next=>{
+        await axios.post(`${api}changePassword`, ele )
+            .then((res) => {
+                next(res.data)
+            }).catch((err)=>{
+                
                 next(err)
             })
     })
@@ -45,7 +60,7 @@ export function searchMedecin(pays,specialite) {
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
+                
                 next(err)
             })
     })
@@ -59,7 +74,7 @@ export function searchMedecinPays(pays) {
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
+                
                 next(err)
             })
     })
@@ -80,7 +95,42 @@ export function signin(email,password,numero,address,date,name, sexe,prefix) {
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
+                
+                next(err)
+            })
+    })
+}
+
+export function verifNumber(numero) {
+    const ele = {
+        
+        numero:numero,
+        
+    };
+    return new Promise(async next=>{
+        await axios.post(`${api}verifNumber`, ele )
+            .then((res) => {
+                next(res.data)
+            }).catch((err)=>{
+                
+                next(err)
+            })
+    })
+}
+
+export function verifNumberFinal(code,newPass,ident) {
+    const ele = {
+        ident:ident,
+        code:code,
+        newPass:newPass,
+        
+    };
+    return new Promise(async next=>{
+        await axios.post(`${api}verifNumberFinal`, ele )
+            .then((res) => {
+                next(res.data)
+            }).catch((err)=>{
+                
                 next(err)
             })
     })
@@ -102,7 +152,7 @@ export function editProfil(email,password,numero,address,dates,name, profil,iden
             .then((res) => {
                 next(res.data)
             }).catch((err)=>{
-                console.log("err \n" +err)
+                
                 next(err)
             })
     })
@@ -134,6 +184,8 @@ export function getAllMedoc() {
             });
     })
 }
+
+
 
 export function autre(ident) {
     return new Promise(next=>{

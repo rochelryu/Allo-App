@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image,ActivityIndicator, TouchableOpacity, StyleSheet, ImageBackground, StatusBar, BackHandler, Alert, AsyncStorage} from 'react-native';
+import {View, Text, Image,ActivityIndicator, TouchableOpacity, StyleSheet, ImageBackground, StatusBar, Alert, AsyncStorage} from 'react-native';
 import * as Font from 'expo-font';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -99,20 +99,8 @@ export default class HomeScreen extends React.Component{
             isFont:true,
             prefix: (prefix == "+225")? true:false,
         })
-        BackHandler.addEventListener('hardwareBackPress', this.onButtonPress.bind(this));
     }
-    onButtonPress() {
 
-            BackHandler.exitApp();
-        return true;
-      }
-
-    handleBackButton = () => {
-         return true;
-       } 
-    componentWillUnmount(){
-        this.backHandler.remove()
-    }
     render(){
         if(this.state.isFont) {
             return(
@@ -125,7 +113,7 @@ export default class HomeScreen extends React.Component{
                     <View style={{height:35, marginLeft:18, paddingLeft:5, marginRight:18, marginTop:45, backgroundColor:"#fff", elevation:3, borderRadius:20, flexDirection: "row",alignItems:"center", justifyContent:"center"}}>
                     <TouchableOpacity style={{width:"100%", alignItems:"center", justifyContent:"center", left:"10%"}} onPress={()=> this.props.navigation.navigate('search') }>
                         <Text style={{position:"absolute",top:"-90%"}}>Trouver votre professionnel de santé en ligne</Text>
-                        <Text style={{color:"#aaa"}}>Un medecin, un établissement, une spécialité</Text>
+                        <Text style={{color:"#aaa"}}><Icon name="search-web" color="#aaa" size={17}/> Un medecin, un établissement, une spécialité</Text>
                         </TouchableOpacity>
 
                     </View>

@@ -197,7 +197,7 @@ export default class intPharmaSeco extends React.Component{
                 this.setState({
                     showRealApp:false
                 })
-                Alert.alert("Erreur", "Veillez remplir tous les champs correctement")
+                Alert.alert("Erreur", "Veuillez remplir tous les champs correctement")
             }
         
     }
@@ -211,7 +211,6 @@ export default class intPharmaSeco extends React.Component{
         let leta = Object.entries(data);
         for(let i in leta){
             if(leta[i][1]==""){
-                console.log[leta[1]];
                 envv = false;
                 break;
             }
@@ -229,7 +228,7 @@ export default class intPharmaSeco extends React.Component{
                 this.setState({
                     showRealApp:false
                 })
-                Alert.alert("Erreur", "Veillez remplir tous les champs correctement")
+                Alert.alert("Erreur", "Veuillez remplir tous les champs correctement")
             }
         
     }
@@ -835,7 +834,6 @@ export default class intPharmaSeco extends React.Component{
                         if (this.camera) {
                             this.setModalVisible(true);
                             let photo = await this.camera.takePictureAsync({base64:true});
-                            //console.log(photo.uri, "the ouf de la mode", photo.base64.length)
                             this.setState(
                                 {
                                     carteGrise: { uri: `data:image/jpg;base64,${photo.base64}` },
@@ -920,7 +918,6 @@ export default class intPharmaSeco extends React.Component{
                         if (this.camera) {
                             this.setModalVisible(true);
                             let photo = await this.camera.takePictureAsync({base64:true});
-                            //console.log(photo.uri, "the ouf de la mode", photo.base64.length)
                             this.setState(
                                 {
                                     carteGrise: { uri: `data:image/jpg;base64,${photo.base64}` },

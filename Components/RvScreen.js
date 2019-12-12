@@ -141,7 +141,7 @@ export default class RvScreen extends React.Component{
         }
         else{
             this.hideDateTimePicker();
-            Alert.alert('Date indisponible', "Vous ne pouvez que prendre un rendez pour une date antrieur de demain");
+            Alert.alert('Date indisponible', "Vous ne pouvez que prendre un rendez pour une date ultérieure de demain");
         }
         
     };
@@ -353,7 +353,7 @@ export default class RvScreen extends React.Component{
                                             </View>
                                         </View>
                                         <View>
-                                            <View>
+                                            <View style={{marginBottom: 30}}>
                                                 <Button
                                                     color="#028fb0"
                                                     title="Envoyer"

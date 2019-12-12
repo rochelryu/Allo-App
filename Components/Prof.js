@@ -131,20 +131,15 @@ export default class ChooseType extends React.Component{
                         this.props.navigation.goBack();
                 }
                 else{
-                    Alert.alert('Erreur', "Veillez remplir tous les champs coorectement")
+
+                    Alert.alert('Erreur', "Veuillez remplir tous les champs correctement")
+                    this.setState({
+                        showRealApp:false,
+                    })
                 }
         
     }
-    _onDoneInscription = () => {
-        let data = {name:this.state.name,numero:this.state.numero,nameUsage:this.state.nameUsage,address:this.state.commune, birthDate: this.state.chosenDate,firstname: this.state.firstname,sexe: (this.state.horo == 0) ? "Homme": "Femme",email:this.state.email,numeroS:this.state.ville}
-            console.log(data);
-            this.socket.emit("ass", data);
-            this.setState({
-                modalVisible:true,
-                isLoad:false,
-                isLoad2:true
-            })
-    }
+
     changeNumber(value){
         this.setState({
             numero:value

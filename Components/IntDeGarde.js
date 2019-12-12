@@ -87,7 +87,7 @@ export default class IntDeGarde extends React.Component{
                         <View style={styles.item}>
                             <TouchableOpacity onPress={()=>this.enterEvent(2)} style={styles.clickable}>
                             <Image style={{width:100, height:"100%" , borderBottomLeftRadius:7,borderTopLeftRadius:7}} source={require('../assets/images/cg.png')}/>
-                                <Text style={styles.title}>Congo Brazaville</Text>
+                                <Text style={styles.title}>Congo Brazzaville</Text>
 
                             </TouchableOpacity>
                         </View>

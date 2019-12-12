@@ -8,12 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@ant-design/react-native": "^3.1.10",
     "axios": "^0.19.0",
     "expo": "^33.0.0",
     "expo-camera": "^5.0.1",
     "expo-font": "^5.0.1",
-    "native-base": "^2.13.4",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
@@ -27,8 +25,6 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.4",
     "react-native-web-swiper": "^2.0.5",
-    "react-navigation": "^3.11.1",
-    "react-navigation-material-bottom-tabs": "^1.0.0",
     "socket.io-client": "^2.3.0"
   },
   "rnpm": {

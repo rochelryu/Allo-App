@@ -79,8 +79,7 @@ export default class ProfilScreen extends React.Component{
         })
     }
     onPrefixChange(value) {
-        console.log("ici", this.state.prefix);
-        if(this.state.prefix == "Sélectionner votre pays" || this.state.prefix == ""){
+        if(this.state.prefix !== "Sélectionner votre pays" && this.state.prefix !== ""){
             this.setState({
                 prefix: value,
             });
@@ -118,7 +117,7 @@ export default class ProfilScreen extends React.Component{
             this.setState({
                 searching:0
             })
-            Alert.alert("Invalide", "Veillez remplir correctement ce que vous recherchez")
+            Alert.alert("Invalide", "Veuillez remplir correctement ce que vous recherchez")
         }
     }
 

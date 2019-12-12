@@ -10,7 +10,7 @@ export default class CardProfils extends React.Component{
             return(
                 <View style={styles.card}>
                     <View style={styles.CardActions}>
-                    <Image source={{uri:ele.url}} style={styles.CardIcon}/>
+                        <Image source={{uri:ele.url}} style={styles.CardIcon}/>
                         <Text style={styles.med}> <Icon name="hospital-building" color="#4dbcc7" size={24}/> {ele.name}</Text>
                     </View>
                     <View style={styles.CardEssentials}>
@@ -18,12 +18,11 @@ export default class CardProfils extends React.Component{
                         <View style={styles.cardHeade}>                            
                                 <Text style={styles.propos}>Responsable : </Text>
                                 <Text style={styles.propose}>{ele.nameResponsable}, {ele.fonctionResponsable}</Text>
-                            <Text style={styles.propos}>Addresse :</Text>
-                            <Text style={styles.propose}>{ele.ville.replace(/\//gi,', ')} {ele.situationGeographique}</Text>
-                            <Text style={styles.propos}>Specialité & Tarif :</Text>
-                            <Text style={styles.propose}>{ele.specialite.map((value,index)=> value.name + " : "+ ele.tarif[index].name + ', ')}</Text>
+                            
                             <Text style={styles.propos}>Contact Primaire :</Text>
                             <Text style={styles.propose}>{ele.contactUn}</Text>
+                            <Text style={styles.propos}>Contact Secondaire :</Text>
+                            <Text style={styles.propose}>{ele.contactDeux ?? "N/A" }</Text>
                             </View>
                         <View style={styles.cardHeade}>                            
                                 <Text style={styles.propos}>Complément : </Text>
@@ -32,9 +31,14 @@ export default class CardProfils extends React.Component{
                             <Text style={styles.propose}>{ele.remboursement}</Text>
                             <Text style={styles.propos}>Email :</Text>
                             <Text style={styles.propose}>{ele.email}</Text>
-                            <Text style={styles.propos}>Contact Secondaire :</Text>
-                            <Text style={styles.propose}>{ele.contactDeux ?? "N/A" }</Text>
+                            
                             </View>
+                    </View>
+                    <View style={styles.CardActions}>
+                    <Text style={styles.propos}>Addresse :</Text>
+                            <Text style={styles.propose}>{ele.ville.replace(/\//gi,', ')} {ele.situationGeographique}</Text>
+                            <Text style={styles.propos}>Specialité & Tarif :</Text>
+                            <Text style={styles.propose}>{ele.specialite.map((value,index)=> value.name + " : "+ ele.tarif[index].name + ', ')}</Text>
                     </View>
                     <View style={styles.CardAction}>
                         <View style={styles.block1}>
