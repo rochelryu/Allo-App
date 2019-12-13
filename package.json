@@ -12,6 +12,7 @@
     "expo": "^33.0.0",
     "expo-camera": "^5.0.1",
     "expo-font": "^5.0.1",
+    "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
@@ -25,6 +26,9 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.4",
     "react-native-web-swiper": "^2.0.5",
+    "react-navigation": "^4.0.10",
+    "react-navigation-material-bottom-tabs": "^2.1.5",
+    "react-navigation-stack": "^1.10.3",
     "socket.io-client": "^2.3.0"
   },
   "rnpm": {
