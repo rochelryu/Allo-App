@@ -3,13 +3,13 @@
     "name": "Allo Sante Express",
     "slug": "Allo",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.1",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
@@ -29,6 +29,7 @@
     },
     "android": {
       "package": "com.icore.allosanteexpress",
+      "versionCode": 3,
       "permissions": [
         "CAMERA"
       ]

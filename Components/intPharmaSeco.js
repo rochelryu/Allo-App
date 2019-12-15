@@ -778,7 +778,6 @@ export default class intPharmaSeco extends React.Component{
               transparent={true}
               visible={this.state.modalVisible}
               onRequestClose={() => {
-                console.log('Fermé');
               }}>
               <View style={{marginTop: 222, height:70, marginLeft:40,marginRight:40,backgroundColor:"#fff", alignItems:"center",justifyContent:"center"}}>
                 <View>
@@ -862,7 +861,6 @@ export default class intPharmaSeco extends React.Component{
               transparent={true}
               visible={this.state.modalVisible}
               onRequestClose={() => {
-                console.log('Fermé');
               }}>
               <View style={{marginTop: 222, height:70, marginLeft:40,marginRight:40,backgroundColor:"#fff", alignItems:"center",justifyContent:"center"}}>
                 <View>

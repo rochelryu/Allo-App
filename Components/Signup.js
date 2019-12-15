@@ -88,7 +88,6 @@ export default class Signup extends React.Component{
         if(this.state.email.length > 5 && this.state.password.length > 3 && this.state.name.length + this.state.firstname.length > 5 && this.state.numero.length >= 8 && pays ){
             const status = await signin(this.state.email,this.state.password,this.state.numero,this.state.ville + ':' + this.state.commune,this.state.chosenDate.toString(),this.state.name + ' '+ this.state.firstname, this.state.horo, this.state.prefix)
             if(status.etat ){
-                console.log(status.user)
                 AsyncStorage.setItem("identAllo", status.user.ident);
                 AsyncStorage.setItem("prefix", status.user.prefix);
                 AsyncStorage.setItem("nameAllo", status.user.name);

@@ -19,14 +19,17 @@ export default class Set extends React.Component{
     async componentDidMount() {
         const ident = await AsyncStorage.getItem("identAllo");
         const isMe = await history(ident);
-        const adds = isMe.user.address.split(':');
-        this.setState({
-            load:1,
-            profil:(isMe.user.profil != "") ? {uri:isMe.user.profil}:require('../assets/images/boss.png'),
-            info:isMe.user,
-            ville:adds[0],
-            communes:adds[1]
-        });
+        if(isMe.etat){
+            const adds = isMe.user.address.split(':');
+            this.setState({
+                load:1,
+                profil:(isMe.user.profil != "") ? {uri:isMe.user.profil}:require('../assets/images/boss.png'),
+                info:isMe.user,
+                ville:adds[0],
+                communes:adds[1]
+            });
+        }
+        
     }
 
     render(){

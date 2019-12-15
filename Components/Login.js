@@ -2,9 +2,13 @@ import React from 'react';
 import {View,TextInput, Text, StyleSheet, AsyncStorage, StatusBar, SafeAreaView, Keyboard, Image, TouchableOpacity,KeyboardAvoidingView,ImageBackground,TouchableWithoutFeedback, Alert} from 'react-native';
 import {login, verifNumber, verifNumberFinal} from '../ServiceWorker/helper';
 import {Spinner} from 'native-base';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {  WebBrowser } from 'expo';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { Button } from 'react-native-elements';
+
+
+
 
 export default class Login extends React.Component{
     constructor(props){

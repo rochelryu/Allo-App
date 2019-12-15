@@ -15,21 +15,19 @@ import {getAllMedoc} from '../ServiceWorker/helper';
 let block = [];
 const CardPharma = (props) =>{
     return (
-        <ListItem avatar>
-              <Left>
+        <View style={styles.viewRow}>
+              <View style={styles.block1}>
                 <Thumbnail source={require('../assets/images/livr.png')} />
-              </Left>
-              <Body>
+              </View>
+              <View style={styles.block2}>
                 <Text style={styles.title}>{props.ele.name}</Text>
                 <Text style={styles.famille}>{props.ele.familie}</Text>
-                
+                <Text style={styles.prix}>{props.ele.price}</Text>
                 <Text style={styles.ordonnance}>{(props.ele.ordonnance)? 'Avec ordonnance': 'Sans ordonnance'}</Text>
-              </Body>
-              <Right>
-              <Text style={styles.prix}>{props.ele.price}</Text>
-              </Right>
+              </View>
               
-       </ListItem>
+              
+       </View>
     );
 };
 const MyCustomLeftComponent = (props) =>{
@@ -44,6 +42,12 @@ const styles = StyleSheet.create({
     padding:{
         padding: 10,
     },
+    viewRow:{
+        
+        margin:10,
+        
+        flexDirection:'row',
+    },
     block:{
         borderBottomWidth:1,
         borderBottomColor:"#777",
@@ -51,6 +55,17 @@ const styles = StyleSheet.create({
         margin:10,
         alignItems: "center",
         justifyContent:"center"
+    },
+    block1:{
+        flex:1,
+        alignItems: "center",
+        justifyContent:"center"
+    },
+    block2:{
+        flex:5,
+        borderBottomWidth:1,
+        borderBottomColor:"#777",
+        margin:5,
     },
     title:{
         fontFamily:"LexendExa",
@@ -143,7 +158,7 @@ export default class intMedoc extends React.Component{
                         theme="info"
                         show={this.state.show}
                         title="NOTE D'INFORMATION"
-                        onRequestClose={()=>{console.log("ok")}}
+                        onRequestClose={()=>{}}
                         subtitle="Les différents prix peuvent varier de 10% selon chaque pharmacie"
                         >
                         <SCLAlertButton theme="info" onPress={this.handleClose}>OK</SCLAlertButton>

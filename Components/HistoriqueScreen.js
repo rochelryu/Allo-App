@@ -24,25 +24,31 @@ export default class HistoriqueScreen extends React.Component{
         const ident = await AsyncStorage.getItem("identAllo");
         const name = await AsyncStorage.getItem("nameAllo");
         const isMe = await history(ident);
+        if(isMe.etat){
+            this.setState({
+                info:isMe.user.services.reverse(),
+            })
+        }
         this.setState({
-            name:name
-        });
-        StatusBar.setHidden(false);
-        this.setState({
-            info:isMe.user.services.reverse(),
+            name:name,
             load:true
-        })
+        });
+        
     }
 
     del = async (ele) => {
         const ident = await AsyncStorage.getItem("identAllo");
-     let focus = this.state.info.filter((value) => this.filtrage(value, ele.code));
+        let focus = this.state.info.filter((value) => this.filtrage(value, ele.code));
      const del = await delSer(ident, ele.code);
      this.setState({
              info:focus
             })
      
     };
+
+    filtrage(value,code){
+        return value.code !== code
+    }
 
     render() {
         if(this.state.load){

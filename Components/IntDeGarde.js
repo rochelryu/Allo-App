@@ -74,7 +74,7 @@ export default class IntDeGarde extends React.Component{
                         }}
                     />
                     <ImageBackground source={require('../assets/bg.jpg')} style={styles.padding}>
-                        <Text style={{position:"absolute", top:"7%", left:10, right:10, fontSize:20, fontFamily:"LexendExa", textTransform:"uppercase", textAlign:"center" }}>Afficher les pharmacies de garde de votre pays</Text>
+                        <Text style={{position:"absolute", top:"4%", left:10, right:10, fontSize:20, fontFamily:"LexendExa", textTransform:"uppercase", textAlign:"center" }}>Afficher les pharmacies de garde de votre pays</Text>
                         <View style={styles.items}>
                             
                         </View>
@@ -109,6 +109,9 @@ export default class IntDeGarde extends React.Component{
                             <Image style={{width:100, height:"100%" , borderBottomLeftRadius:7,borderTopLeftRadius:7}} source={require('../assets/images/cm.png')}/>
                                 <Text style={styles.title}>Cameroun - Yaoundé</Text>
                             </TouchableOpacity>
+                        </View>
+                        <View style={styles.item}>
+                           
                         </View>
 
                     </ImageBackground>
