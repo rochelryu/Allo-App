@@ -140,7 +140,7 @@ export default class Login extends React.Component{
                                         onChangeText={(value)=>this.changeEmail(value)}
                                         style={styles.focus}
                                         keyboardType="number-pad"
-                                        placeholder = "Veuillez entrer votre numero (ex : 01020304)"
+                                        placeholder = "Votre numero (ex : 01020304)"
                                         returnKeyType = { "next" }
                                         onSubmitEditing={() => { this.secondTextInput.focus(); }}
                                         blurOnSubmit={false}

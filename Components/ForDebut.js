@@ -27,8 +27,11 @@ export default class ForDebut extends React.Component{
             this.props.navigation.navigate('SplashScreen');
         
         }
-        BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+        BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
 
+    }
+    componentDidUpdate(){
+        BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);   
     }
 
     handleBackPress = () => {

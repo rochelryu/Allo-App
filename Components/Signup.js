@@ -395,8 +395,12 @@ export default class Signup extends React.Component{
                                         {(this.state.showRealApp)? <Spinner color="#fff"/>: <Image style={styles.signinImg}
                                                source={require('../assets/images/inscription.png')}/>}
                                     </TouchableOpacity>
+                                    <View style={{height:25}}>
+                                    </View>
+                                    <TouchableOpacity onPress={()=>{this.props.navigation.navigate('LoginScreen')}} style={styles.inscription}>
+                                        <Image style={styles.signinImg} source={require('../assets/images/btcon.png')} />
+                                    </TouchableOpacity>
                                     <View style={{height:55}}>
-
                                     </View>
                                 </ScrollView>
                             </ImageBackground>
