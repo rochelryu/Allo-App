@@ -85,7 +85,7 @@ export default class Setting extends React.Component{
             communes:adds[1],
             chosenDate:isMe.user.date
         });
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
 
     setModalVisible(visible) {

@@ -107,7 +107,7 @@ export default class ChooseType extends React.Component{
         });
     }
     componentWillMount() {
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
 
     setDate = (newDate)=>{

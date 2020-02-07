@@ -30,7 +30,7 @@ export default class Login extends React.Component{
         this.changePass = this.changePass.bind(this);
     }
     componentDidMount() {
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
 
     changeEmail(value){

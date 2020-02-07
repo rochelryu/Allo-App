@@ -69,7 +69,7 @@ export default class Signup extends React.Component{
             continue;
         }
         this.setState({totalAd:verif,load:1});
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
 
     setDate = (newDate)=>{

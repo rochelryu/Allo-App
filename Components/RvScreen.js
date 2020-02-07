@@ -108,7 +108,7 @@ export default class RvScreen extends React.Component{
         });
     }
     async componentDidMount() {
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
         const ident = await AsyncStorage.getItem("identAllo");
         const name = await AsyncStorage.getItem("nameAllo");
         const isMe = await autre(ident);

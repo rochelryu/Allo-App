@@ -55,7 +55,7 @@ export default class TypeAss extends React.Component{
 
     }
     componentDidMount(){
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
 
     }
     render(){

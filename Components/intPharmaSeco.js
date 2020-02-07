@@ -164,7 +164,7 @@ export default class intPharmaSeco extends React.Component{
     componentWillMount() {
         this.setState({ load: parseInt(this.props.navigation.state.params.inter,10)
         });
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
 
     setDate = (newDate)=>{

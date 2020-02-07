@@ -52,7 +52,7 @@ export default class ChooseAutoMoto extends React.Component{
         }
     }
         async componentDidMount() {
-        StatusBar.setHidden(true);
+        StatusBar.setHidden(false);
     }
     _onDone(id){
         if(id === 1){
