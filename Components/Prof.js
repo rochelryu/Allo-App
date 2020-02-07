@@ -216,7 +216,7 @@ export default class ChooseType extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Type D'assurance"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}

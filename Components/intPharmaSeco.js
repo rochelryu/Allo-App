@@ -552,7 +552,7 @@ export default class intPharmaSeco extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Genre vehicule"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -633,7 +633,7 @@ export default class intPharmaSeco extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Carosserie"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -723,7 +723,7 @@ export default class intPharmaSeco extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Garanties"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -1142,7 +1142,7 @@ export default class intPharmaSeco extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Genre vehicule"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -1214,7 +1214,7 @@ export default class intPharmaSeco extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Garanties"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}

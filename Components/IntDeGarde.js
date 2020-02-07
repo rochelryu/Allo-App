@@ -74,7 +74,7 @@ export default class IntDeGarde extends React.Component{
                         }}
                     />
                     <ImageBackground source={require('../assets/bg.jpg')} style={styles.padding}>
-                        <Text style={{position:"absolute", top:"4%", left:10, right:10, fontSize:20, fontFamily:"LexendExa", textTransform:"uppercase", textAlign:"center" }}>Afficher les pharmacies de garde de votre pays</Text>
+                        <Text style={{position:"absolute", top:"2%", left:10, right:10, fontSize:18, fontFamily:"LexendExa", textTransform:"uppercase", textAlign:"center" }}>Afficher les pharmacies de garde de votre pays</Text>
                         <View style={styles.items}>
                             
                         </View>
@@ -137,7 +137,8 @@ export default class IntDeGarde extends React.Component{
             flex:1,
             alignItems:"flex-end",
             justifyContent:"flex-end",
-            paddingBottom:15,
+            paddingBottom:10,
+            paddingTop:5,
         },
         items:{
             flex:1,
@@ -162,7 +163,8 @@ export default class IntDeGarde extends React.Component{
             fontFamily:"LexendExa",
             fontSize: 14,
             textAlign:"center",
-            marginRight:95,
+            marginLeft: 10,
+            marginRight:80,
             fontWeight:"700",
         },
         numberLibre:{

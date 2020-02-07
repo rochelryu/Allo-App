@@ -253,7 +253,7 @@ back(){
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" />}
                                                 placeholder="Pathologie"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -361,6 +361,6 @@ const styles = StyleSheet.create({
             borderRadius: 30,
             alignItems:"center",
             justifyContent:"center",
-    ...elevationShadowStyle(2)
+    
     }
 });

@@ -3,8 +3,10 @@ import {
     View,
     ScrollView,
     StatusBar,
+    Image,
     FlatList,AsyncStorage,
-    ActivityIndicator
+    ActivityIndicator,
+    Text,
 } from 'react-native';
 import {history, delSer} from '../ServiceWorker/helper'
 import {Header} from "react-native-elements";
@@ -17,7 +19,7 @@ export default class HistoriqueScreen extends React.Component{
         this.state={
             info:[],
             name:"",
-            load:false
+            load:0
         }
     }
     async componentDidMount() {
@@ -31,7 +33,7 @@ export default class HistoriqueScreen extends React.Component{
         }
         this.setState({
             name:name,
-            load:true
+            load:isMe.user.services[0] ? 1 : 2
         });
         
     }
@@ -51,7 +53,7 @@ export default class HistoriqueScreen extends React.Component{
     }
 
     render() {
-        if(this.state.load){
+        if(this.state.load === 1){
             return(
                 <View style={{flex:1, backgroundColor:"#fff"}}>
                     <Header
@@ -68,6 +70,23 @@ export default class HistoriqueScreen extends React.Component{
                             renderItem={({item}) => <CardHistorique ele={item} action={this.del} />}
                         />
                     </ScrollView>
+                </View>
+            )
+        }
+        else if (this.state.load === 2) {
+            return(
+                <View style={{flex:1, backgroundColor:"#fff"}}>
+                    <Header
+                        centerComponent={{ text: "Votre Historique", style: { color: '#fff' } }}
+                        containerStyle={{
+                            backgroundColor: '#4dbcc7',
+                            justifyContent: 'space-around',
+                        }}
+                    />
+                    <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+                        <Image source={require('../assets/images/box.png')} style={{width:64, height:64, marginBottom: 20}} />
+                        <Text style={{color: '#4dbcc7', fontSize: 17}}>Vous n'avez utilisé aucun service</Text>
+                    </View>
                 </View>
             )
         }

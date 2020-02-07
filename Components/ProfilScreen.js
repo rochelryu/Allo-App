@@ -164,12 +164,12 @@ export default class ProfilScreen extends React.Component{
                             justifyContent: 'space-around',
                         }}
                     />
-                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, flexDirection: "row",alignItems:"center"}}>
+                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, borderColor:'#999', borderWidth:1, flexDirection: "row",alignItems:"center"}}>
                     <Picker
                                                     mode="dropdown"
                                                     iosIcon={<Icon name="arrow-down" />}
                                                     placeholder="Sélectionner votre pays"
-                                                    placeholderStyle={{ color: "#fff" }}
+                                                    placeholderStyle={{ color: "#555" }}
                                                     placeholderIconColor="#007aff"
                                                     textStyle={{ color: "#fff" }}
                                                     itemStyle={{
@@ -185,7 +185,7 @@ export default class ProfilScreen extends React.Component{
                                                     {this.state.totalAd.map((value,index)=><Picker.Item key={index} label={value.labelle} value={value.labelle} />)}
                                                 </Picker>
                     </View>
-                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginBottom:10, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, flexDirection: "row",alignItems:"center"}}>
+                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginBottom:10, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, borderColor:'#999', borderWidth:1, flexDirection: "row",alignItems:"center"}}>
                         <TextInput onChangeText={(value)=>this.specialite(value)} placeholder="(Médecin,etablissement,spécialité)" style={{height:35,color:"#999",width:"75%", paddingLeft:10, borderRadius:20}}/>
                         <TouchableOpacity style={{width:"20%", alignItems:"center", justifyContent:"center"}} onPress={()=> this._search() }>
                         <Icon name="cloud-search-outline" color="#999"

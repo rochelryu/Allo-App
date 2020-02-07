@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     img:{
         width:60,
-        borderRadius:100,
+        borderRadius:30,
         height:60,
     },
     title:{

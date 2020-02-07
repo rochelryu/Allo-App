@@ -38,7 +38,7 @@ export default class Set extends React.Component{
                 <View style={styles.container}>
                     <View style={styles.hearder}>
                         <View style={styles.rondedImage}>
-                        <Image source={this.state.profil} style={{width:80,height:80,borderRadius:100}} />
+                        <Image source={this.state.profil} style={{width:80,height:80,borderRadius:40}} />
                         </View>
                         <Text>{this.state.info.name}</Text>
                     </View>

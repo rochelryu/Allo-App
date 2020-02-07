@@ -250,7 +250,7 @@ export default class Signup extends React.Component{
                                     <Picker
                                                 mode="dropdown"
                                                 placeholder="Votre Pays"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}
@@ -282,7 +282,7 @@ export default class Signup extends React.Component{
                                                 mode="dropdown"
                                                 iosIcon={<Icon name="arrow-down" colors='#ffffff' />}
                                                 placeholder="Prefix"
-                                                placeholderStyle={{ color: "#fff" }}
+                                                placeholderStyle={{ color: "#555" }}
                                                 placeholderIconColor="#007aff"
                                                 style={styles.inputs}
                                                 textStyle={{ color: "#fff" }}

@@ -163,8 +163,8 @@ export default class intMedoc extends React.Component{
                         >
                         <SCLAlertButton theme="info" onPress={this.handleClose}>OK</SCLAlertButton>
                     </SCLAlert>
-                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginBottom:10, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, flexDirection: "row",alignItems:"center"}}>
-                        <TextInput onChangeText={(value)=>this.specialite(value)} placeholder="Recherche par nom, prix ou famille" style={{height:35,color:"#999", paddingLeft:10, borderRadius:20}}/>
+                    <View style={{height:40, marginLeft:30, paddingLeft:5, marginRight:30, marginBottom:10, marginTop:5, backgroundColor:"#fff", elevation:3, borderRadius:20, flexDirection: "row", borderColor:'#999', borderWidth:1, alignItems:"center"}}>
+                        <TextInput onChangeText={(value)=>this.specialite(value)} placeholder="Recherche par nom, prix ou famille" style={{height:35,color:"#999", paddingLeft:10, borderRadius:20 }}/>
                     </View>
                 <ScrollView>
                 <FlatList

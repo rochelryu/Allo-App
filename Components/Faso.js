@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         marginTop:13,
         margin:7,
         paddingLeft:120,
-        ...elevationShadowStyle(3),
+        ...elevationShadowStyle(1),
         borderRadius:5,
         flex:1,
         backgroundColor: "#fff",
