@@ -1,7 +1,7 @@
 import axios from 'axios';
-const api = "http://144.91.99.109:8080/API/V1/focus/"; 
+const api = "http://127.0.0.1:8080/API/V1/focus/"; //144.91.99.109
 
-export const socketLink = "http://144.91.99.109:8080";
+export const socketLink = "http://127.0.0.1:8080";
 
 export function login(email,password) {
     const ele = {
